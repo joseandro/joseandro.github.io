@@ -36,7 +36,8 @@ I recently had a similar experience learning zero knowledge cryptography (aka zk
 
 Before I start talking about what it is, here is an advice: don’t beat yourself if you don’t understand things the first time you read it, stay strong at it! You will probably have to read the same paragraph or rewatch a lecture multiple times to understand a concept, that's OK, that is expected. Zero knowledge proofs are built on top of multiple layers of math, cryptography, and computer science theory. My goal is that as we explore what zk-cryptography is in subsequent posts, you will start acquiring the knowledge you need to understand and appreciate how different proof-systems work under the hood. Hopefully, as you learn more about it, you will also see the beauty in it. 
 
-You can start with the [first]({{< ref "/posts/what_is_zk" >}}) post in this series, I hope you enjoy it!
+<!-- [first]({{< ref "/posts/what_is_zk" >}}) -->
+You can start with the first post in this series, I hope you enjoy it!
 
 
 

@@ -21,7 +21,7 @@ params:
   # author: ["Me", "You"] # multiple authors
   images: ["/img/jl_blog.png"]
   DateFormat: "January 2, 2006"
-  defaultTheme: dark #auto, dark, light
+  defaultTheme: auto #, dark, light
   disableThemeToggle: false
   ShowReadingTime: true
   ShowShareButtons: true
@@ -30,14 +30,15 @@ params:
   ShowCodeCopyButtons: true
   ShowWordCount: true
   ShowRssButtonInSectionTermList: false
-  UseHugoToc: true
+  UseHugoToc: false
   disableSpecial1stPost: false
   disableScrollToTop: false
-  comments: false
+  comments: true
   hidemeta: false
   hideSummary: false
   showtoc: false
   tocopen: false
+  enableEmoji: true
 
   assets:
     # disableHLJS: true # to disable highlight.js
@@ -57,9 +58,10 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
-    Content: "I currently work as the engineering manager of the cryptography team at O(1) Labs.
-    I am interested in zero knowledge protocols and have a formal background in artificial intelligence and machine learning.
-    This is where I will write about the things I have on my mind and what I am currently exploring."
+    Content: "I currently work as the engineering manager at O(1) Labs. I have a formal
+    background in artificial intelligence and machine learning and a lot of interest in zero
+    knowledge protocols. This is where I write about the things I have on my mind and what
+    I am currently exploring."
   socialIcons:
     - name: twitter
       url: "https://twitter.com/joseandroluiz"

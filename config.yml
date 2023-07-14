@@ -77,7 +77,12 @@ params:
       SiteVerificationTag: "XYZabc"
     yandex:
       SiteVerificationTag: "XYZabc"
-
+  
+  #Google Analytics
+  google:
+    analytics:
+      id: "G-0VTM3ZTC5C"
+  
   cover:
     hidden: false # hide everywhere but not in structured data
     hiddenInList: true # hide on list pages and home

@@ -1,3 +1,7 @@
 {{ if or .Params.math .Site.Params.math }}
 {{ partial "math.html" . }}
 {{ end }}
+
+{{ if .Site.Params.google.analytics }}
+{{ partial "analytics.html" . }}
+{{ end }}

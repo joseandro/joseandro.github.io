@@ -58,7 +58,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
-    Content: "I currently work as the engineering manager at O(1) Labs. I have a formal
+    Content: "I currently work as engineering manager at O(1) Labs. I have a formal
     background in artificial intelligence and machine learning and a lot of interest in zero
     knowledge protocols. This is where I write about the things I have on my mind and what
     I am currently exploring."

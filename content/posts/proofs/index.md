@@ -80,7 +80,7 @@ While both \\(P\\) and \\(NP\\) use a deterministic \\(TM\\), the \\( BPP \\) co
 
 In statistics, we use the "fair coin" metaphor to refer to any event that has only **two possible** outcomes with equal chances of happening (i.e., 50:50). If you count the results of **many** fair coin tosses, the odds of heads and tails will converge to 50:50. Furthermore, we also use the fair coin flip as a good source of randomness, as it is a physical event with many variables that are difficult to control and repeat: air speed and drag, force and angle of the flip, time to catch the coin in the air, etc. In practice, the fair coin can be implemented as an algorithm using **RNG**.
 
-The \\( BPP \\) class in a summary:
+The \\( PPT \\) in \\( BPP \\) class:
 - Is allowed to flip a fair coin to make random decisions. 
 - Runs in polynomial time.
 - Has a bounded probability of error. We arbitrarily use \\( \frac{1}{3} \\) but it doesn't really matter as long as it is strictly less than \\( \frac{1}{2} \\), as algorithms that make wrong decisions half of the time can be simply replaced with a fair coin.

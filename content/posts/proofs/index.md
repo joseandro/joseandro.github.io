@@ -97,7 +97,7 @@ The second time the \\( PPT \\) runs the probabilistic algorithm, the probabilit
 
 - \\(k = 5  \rightarrow 2^{-5}  = 0.031\\)
 - \\(k = 10 \rightarrow 2^{-10} = 0.00098\\)
-- \\(k = 20 \rightarrow 2^{-20} = 0,00000095\\)
+- \\(k = 20 \rightarrow 2^{-20} = 0.00000095\\)
 - \\(k = 30 \rightarrow 2^{-30} = 0.00000000093\\)
 
 The catch in \\(BPP\\) is that we can drive the odds of error to as low as we want by re-running the problem on a \\(PPT\\) machine with the same inputs. In this different scenario, enabled by the probabilistic model of computation, how do we **accept** or **reject** a computation? One possibility is to decide at the end of all runs by the majority of the answers. However, it doesn't matter how much we drive down the error, a tiny probability will still exist regardless of how miniscule it will be. \\( BPP \\) is a great option if we are have enough capacity to run the model multiple times. The \\( BPP \\) class can model more realistic algorithms, give efficient approximations to computationally infeasible problems, provide better handling of errors and noise, and even analyze security in cryptography! It turns out that most problems in \\( BPP \\) can run quickly on a modern computer. The benefits of having a \\( PPT \\) machine are so great that we will later incorporate it into proof systems to make our proofs more practical in real life! This is fantastic! 🤯 

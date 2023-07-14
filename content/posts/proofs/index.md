@@ -80,7 +80,7 @@ While both \\(P\\) and \\(NP\\) use a deterministic \\(TM\\), the \\( BPP \\) co
 
 In statistics, we use the "fair coin" metaphor to refer to any event that has only **two possible** outcomes with equal chances of happening (i.e., 50:50). If you count the results of **many** fair coin tosses, the odds of heads and tails will converge to 50:50. Furthermore, we also use the fair coin flip as a good source of randomness, as it is a physical event with many variables that are difficult to control and repeat: air speed and drag, force and angle of the flip, time to catch the coin in the air, etc. In practice, the fair coin can be implemented as an algorithm using **RNG**.
 
-The \\( PPT \\) in \\( BPP \\) class:
+The \\( PPT \\) machine in the \\( BPP \\) class:
 - Is allowed to flip a fair coin to make random decisions. 
 - Runs in polynomial time.
 - Has a bounded probability of error. We arbitrarily use \\( \frac{1}{3} \\) but it doesn't really matter as long as it is strictly less than \\( \frac{1}{2} \\), as algorithms that make wrong decisions half of the time can be simply replaced with a fair coin.
@@ -89,18 +89,20 @@ Formalizing the error bound definition a bit more, for decision problems with:
 - **Yes answers**: the input is in the \\( BPP \\) language, the \\( PPT \\) will **accept the valid input** with a probability greater than or equal to \\( \frac{2}{3} \\) and **reject the valid input** with probability less than or equal to \\( \frac{1}{3} \\).
 - **No answers**: the input is not in the \\( BPP \\) language, the \\( PPT \\) will **accept the invalid input** with a probability less than or equal to \\( \frac{1}{3} \\) and **reject the invalid input** with probability greater than or equal to \\( \frac{2}{3} \\).
 
-At first, it might seem counter-intuitive (and arguably, a bad decision) to allow errors, after all, \\( \frac{1}{3} \\) is still a high probability, but stick with me. In statistics, the resulting probability of multiple events happening on a row compounds with the of the odds of each event. So, we run the probabilistic algorithm multiple times to drive down the chances of error. Remember, the **right** or **wrong** outcome is being decided using a fair coin. Let's see how the odds of making wrong decisions stack up as we repeat the same probabilistic algorithm \\(k\\) times:
+At first, it might seem counter-intuitive (and arguably, a bad decision) to allow errors, after all, a \\( \frac{1}{3} \\) probability seems high, but stick with me. In statistics, the resulting probability of multiple events happening on a row compounds with the of the odds of each event. So, we run the probabilistic algorithm multiple times to drive down the chances of error. Remember, the **right** or **wrong** outcome is being decided using a fair coin. Let's see how the odds of making wrong decisions stack up as we run the same algorithm in the \\(PPT\\) machine \\(k\\) times:
 - \\(k = 1 \rightarrow \frac{1}{3} = 0.333 \\)
 - \\(k = 2 \rightarrow \frac{1}{2}*\frac{1}{2} = \frac{1}{2^{2}} = 2^{-2} = \frac{1}{4} = 0.25\\)
 
-The second time the \\( PPT \\) runs the probabilistic algorithm, the probability of consecutively making two wrong decisions goes down to \\( \frac{1}{4} \\), which is already below the \\( \frac{1}{3} \\) error bound. The odds of making consecutive wrong decisions is \\(2^{-k}\\):
+The second time that the \\( PPT \\) machine runs the algorithm the probability of consecutively making two wrong decisions goes down to \\( \frac{1}{4} \\), which is already below the \\( \frac{1}{3} \\) error bound. The odds of making consecutive wrong decisions is \\(2^{-k}\\):
 
 - \\(k = 5  \rightarrow 2^{-5}  = 0.031\\)
 - \\(k = 10 \rightarrow 2^{-10} = 0.00098\\)
 - \\(k = 20 \rightarrow 2^{-20} = 0.00000095\\)
 - \\(k = 30 \rightarrow 2^{-30} = 0.00000000093\\)
 
-The catch in \\(BPP\\) is that we can drive the odds of error to as low as we want by re-running the problem on a \\(PPT\\) machine with the same inputs. In this different scenario, enabled by the probabilistic model of computation, how do we **accept** or **reject** a computation? One possibility is to decide at the end of all runs by the majority of the answers. However, it doesn't matter how much we drive down the error, a tiny probability will still exist regardless of how miniscule it will be. \\( BPP \\) is a great option if we are have enough capacity to run the model multiple times. The \\( BPP \\) class can model more realistic algorithms, give efficient approximations to computationally infeasible problems, provide better handling of errors and noise, and even analyze security in cryptography! It turns out that most problems in \\( BPP \\) can run quickly on a modern computer. The benefits of having a \\( PPT \\) machine are so great that we will later incorporate it into proof systems to make our proofs more practical in real life! This is fantastic! 🤯 
+The catch in \\(BPP\\) is that we can drive the odds of error to as low as we want by re-running the problem on a \\(PPT\\) machine with the same inputs. However, it doesn't matter how much we drive down the error, a tiny probability will still exist regardless of how miniscule it will be. How do you think we can **accept** or **reject** a computation in a probabilistic model of computation, where errors are allowed? One possibility is to decide at the end of all runs by the majority of the answers.
+
+\\( BPP \\) is a great option if we are have enough capacity to run the model multiple times. The \\( BPP \\) class can model more realistic algorithms, give efficient approximations to computationally infeasible problems, provide better handling of errors and noise, and even analyze security in cryptography! It turns out that most problems in \\( BPP \\) can run quickly on a modern computer. The benefits of having a \\( PPT \\) machine are so great that we will later incorporate it into proof systems to make our proofs more practical in real life! This is fantastic! 🤯 
 
 The complexity class \\( P \\), problems solvable in polynomial time using a deterministic machine, is contained in \\( BPP \\) (\\( P \subseteq BPP \\)) because deterministic machines are just a special case of probabilistic machines. Today is unknown if \\( BPP=P \\), since many problems that computer scientists believed to be in \\( BPP \\), but not in \\( P \\), are decreasing. 
 

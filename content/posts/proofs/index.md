@@ -76,16 +76,16 @@ If this is your first time reading about complexity classes, I recommend you to 
 If you want to know more about \\( P \ vs \ NP \\) without going into crazy loads of math to understand it, I recommend this great two videos: [*\\(P\\) vs. \\(NP\\) and the Computational Complexity Zoo*](https://www.youtube.com/watch?v=YX40hbAHx3s) and [*\\(P\\) vs. \\(NP\\) - The Biggest Unsolved Problem in Computer Science*](https://www.youtube.com/watch?v=EHp4FPyajKQ).
 
 ### Bounded-error probabilistic polynomial-time (BPP)
-While both \\(P\\) and \\(NP\\) use a deterministic \\(TM\\), the \\( BPP \\) complexity class contains the languages that can be solved by a **probabilistic \\(TM\\)** running in polynomial time with a bounded error probability. In other words, the acceptance will depend on the results of fair coin tosses with a very small (but quantifiable) probability of error. Efficient probabilistic algorithms are also called \\( PPT \\), probabilistic polynomial-time machines. 
+While both \\(P\\) and \\(NP\\) use a deterministic \\(TM\\), the \\( BPP \\) complexity class contains the languages that can be solved by a **probabilistic \\(TM\\)** running in polynomial time with a bounded error probability. In other words, the execution result will depend on the results of fair coin tosses with a very small (but quantifiable) probability of error. Probabilistic efficient \\(TM\\) are also called \\( PPT \\), probabilistic polynomial-time machines. 
 
-In statistics, we use the "fair coin" metaphor to refer to any event that has only **two possible** outcomes with equal chances of happening (i.e., 50%/50%). If you count the results of **many** fair coin tosses, the odds of heads and tails will converge to 50:50. Furthermore, we also use the fair coin flip as a good source of randomness, as it is a physical event with many variables that are difficult to control and repeat: air speed and drag, force and angle of the flip, time to catch the coin in the air, etc. In practice, the fair coin can be modeled with a RNG.
+In statistics, we use the "fair coin" metaphor to refer to any event that has only **two possible** outcomes with equal chances of happening (i.e., 50:50). If you count the results of **many** fair coin tosses, the odds of heads and tails will converge to 50:50. Furthermore, we also use the fair coin flip as a good source of randomness, as it is a physical event with many variables that are difficult to control and repeat: air speed and drag, force and angle of the flip, time to catch the coin in the air, etc. In practice, the fair coin can be implemented as an algorithm using **RNG**.
 
 The \\( BPP \\) class in a summary:
 - Is allowed to flip a fair coin to make random decisions. 
 - Runs in polynomial time.
-- Has a bounded probability of error. We arbitrarily use \\( \frac{1}{3} \\) but it doesn't really matter as long as it is strictly less than \\( \frac{1}{2} \\) because an algorithm that makes wrong decisions half of the time can be simply replaced with a fair coin.
+- Has a bounded probability of error. We arbitrarily use \\( \frac{1}{3} \\) but it doesn't really matter as long as it is strictly less than \\( \frac{1}{2} \\), since the algorithm that makes wrong decisions half of the time can be simply replaced with a fair coin.
 
-Making the error bound definition more formal. For decision problems with:
+Formalizing the error bound definition a bit more, for decision problems with:
 - **Yes answers**: the input is in the \\( BPP \\) language, the \\( PPT \\) will **accept the valid input** with a probability greater than or equal to \\( \frac{2}{3} \\) and **reject the valid input** with probability less than or equal to \\( \frac{1}{3} \\).
 - **No answers**: the input is not in the \\( BPP \\) language, the \\( PPT \\) will **accept the invalid input** with a probability less than or equal to \\( \frac{1}{3} \\) and **reject the invalid input** with probability greater than or equal to \\( \frac{2}{3} \\).
 

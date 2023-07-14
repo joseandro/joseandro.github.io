@@ -1,6 +1,6 @@
 ---
 title: "What are zero knowledge proofs?"
-date: 2023-06-13T01:30:03+00:00
+date: 2023-07-13T01:30:03+00:00
 weight: 1
 aliases: ["/proofs"]
 showToc: false

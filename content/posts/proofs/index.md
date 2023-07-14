@@ -1,6 +1,6 @@
 ---
 title: "What are zero knowledge proofs?"
-date: 2023-06-16T01:30:03+00:00
+date: 2023-06-13T01:30:03+00:00
 weight: 1
 aliases: ["/proofs"]
 showToc: false
@@ -27,7 +27,7 @@ cover:
     relative: false # when using page bundles set this to true
     hidden: true # only hide on current single page
 ---
-My goal in this post is to explain zero knowledge proofs using first principles as I incrementally introduce more theory to explain and make sense of it. Here I describe things in a way that most people with some basic level of comfort in mathematics can comprehend. The reason why I decided to write about it comes from a personal struggle, most of the material I found available online was either too shallow or too heavy for me to understand zero knowledge proofs. Despite all my efforts to break everything down into chunks that are easier to digest, I must admit that it is a difficult topic built on a lot of theory, but I hope you stick to it. See you on the other side!  
+My goal in this post is to explain zero knowledge proofs using first principles as I incrementally introduce more theory to explain and make sense of it. Here I describe things in a way that most people with some basic level of comfort in mathematics can comprehend. The reason why I decided to write about it comes from a personal struggle, most of the material I found available online was either too shallow or too heavy for me to understand zero knowledge proofs. Despite all my efforts to break everything down into chunks that are easier to digest, I must admit that it is a difficult topic built on a lot of theory, but I hope you stick to it. See you on the other side! 
 
 # Proof models
 Instead of jumping into the definition of zero knowledge proofs directly, we will start from the very beginning: let's think about how **proofs** are generally defined. There are a number of different ways for making proofs (i.e., proof models), but one that easily comes to mind is the model used for mathematical proofs of theorems. [Mathematical proofs](https://en.wikipedia.org/wiki/Mathematical_proof) can take many forms and use multiple strategies. For example, one can prove a theorem using [induction](https://en.wikipedia.org/wiki/Mathematical_induction), [contradiction](https://en.wikipedia.org/wiki/Proof_by_contradiction), [contraposition](https://en.wikipedia.org/wiki/Contraposition), etc. In essence, once the mathematical proof is written down, anyone can follow its instructions step-by-step to verify its validity. 

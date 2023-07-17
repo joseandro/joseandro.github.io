@@ -2,13 +2,16 @@ baseURL: "/"
 title: Joseandro Luiz
 # paginate: 5
 theme: PaperMod
+disableKinds: ["taxonomy", "term"]
 
+taxonomies:
+  category: "categories"
+  tag: "tags"
+    
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
-
-googleAnalytics: UA-57232738-1
 
 minify:
   disableXML: true
@@ -16,69 +19,57 @@ minify:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: ExampleSite
-  description: "ExampleSite description"
-  keywords: [Blog, Portfolio, PaperMod]
-  author: Me
+  title: Joseandro Luiz
+  description: "Blog about zero knowledge cryptography, machine learning, artificial intelligence, and computer science. "
+  keywords: [zk-cryptography, Zero Knowledge, Zero Knowledge Cryptography, machine learning, ML, ZKML, AI]
+  author: Joseandro Luiz
   # author: ["Me", "You"] # multiple authors
-  images: ["<link or path of image for opengraph, twitter-cards>"]
+  images: ["/img/jl_blog.png"]
   DateFormat: "January 2, 2006"
-  defaultTheme: auto # dark, light
+  defaultTheme: auto #, dark, light
+  enableGitInfo: true
   disableThemeToggle: false
-
   ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
+  ShowCodeCopyButtons: true
   ShowWordCount: true
-  ShowRssButtonInSectionTermList: true
-  UseHugoToc: true
+  ShowRssButtonInSectionTermList: false
+  UseHugoToc: false
   disableSpecial1stPost: false
   disableScrollToTop: false
-  comments: false
+  comments: true
   hidemeta: false
   hideSummary: false
   showtoc: false
   tocopen: false
+  enableEmoji: true
+  editPost:
+    URL: "https://github.com/joseandro/joseandro.github.io/blob/main/content/"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
 
   assets:
     # disableHLJS: true # to disable highlight.js
     # disableFingerprinting: true
-    favicon: "<link / abs url>"
-    favicon16x16: "<link / abs url>"
-    favicon32x32: "<link / abs url>"
-    apple_touch_icon: "<link / abs url>"
-    safari_pinned_tab: "<link / abs url>"
-
-  label:
-    text: "Home"
-    icon: /apple-touch-icon.png
-    iconHeight: 35
-
-  # profile-mode
-  profileMode:
-    enabled: false # needs to be explicitly set
-    title: ExampleSite
-    subtitle: "This is subtitle"
-    imageUrl: "<img location>"
-    imageWidth: 120
-    imageHeight: 120
-    imageTitle: my image
-    buttons:
-      - name: Posts
-        url: posts
-      - name: Tags
-        url: tags
+    favicon: "/favicon.ico"
+    favicon16x16: "/favicon-16x16.png"
+    favicon32x32: "/favicon-32x32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
+    android-chrome-512x512: "/android-chrome-512x512.png"
+    android-chrome-192x192: "/android-chrome-192x192.png"
 
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
-    Content: Welcome to my blog
-
+    Content: "I currently work as engineering manager at O(1) Labs. I have a formal
+    background in artificial intelligence and machine learning and a lot of interest in zero
+    knowledge protocols. This is where I write about the things I have on my mind and what
+    I am currently exploring."
   socialIcons:
     - name: twitter
-      url: "https://twitter.com/joseandro"
+      url: "https://twitter.com/joseandroluiz"
     - name: linkedin
       url: "https://www.linkedin.com/in/joseandro/"
     - name: github
@@ -86,21 +77,19 @@ params:
 
   analytics:
     google:
-      SiteVerificationTag: "XYZabc"
-    bing:
-      SiteVerificationTag: "XYZabc"
-    yandex:
-      SiteVerificationTag: "XYZabc"
-
+      SiteVerificationTag: "GLSBbBSgAX0wWyIdFH8q_go6zwX9i5QKvCTy85Cu2m8"
+    # bing:
+    #   SiteVerificationTag: "XYZabc"
+    # yandex:
+    #   SiteVerificationTag: "XYZabc"
+  
+  #Google Analytics
+  GoogleAnalyticsID: "G-9Q37P73RW3"
+  
   cover:
-    hidden: true # hide everywhere but not in structured data
+    hidden: false # hide everywhere but not in structured data
     hiddenInList: true # hide on list pages and home
-    hiddenInSingle: true # hide on single page
-
-  editPost:
-    URL: "https://github.com/<path_to_repo>/content"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+    hiddenInSingle: false # hide on single page
 
   # for search
   # https://fusejs.io/api/options.html
@@ -112,25 +101,21 @@ params:
     threshold: 0.4
     minMatchCharLength: 0
     keys: ["title", "permalink", "summary", "content"]
-# menu:
-#   main:
-#     - identifier: categories
-#       name: categories
-#       url: /categories/
-#       weight: 10
-#     - identifier: tags
-#       name: tags
-#       url: /tags/
-#       weight: 20
-#     - identifier: example
-#       name: example.org
-#       url: https://example.org
-#       weight: 30
+menu:
+  main:
+    - identifier: posts
+      name: Posts
+      url: /posts/
+      weight: 10
+    # - identifier: archive
+    #   name: archive
+    #   url: /archive/
+    #   weight: 20
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
-markup:
-  highlight:
-    noClasses: false
+# markup:
+#   highlight:
+#     noClasses: false
     # anchorLineNos: true
     # codeFences: true
     # guessSyntax: true

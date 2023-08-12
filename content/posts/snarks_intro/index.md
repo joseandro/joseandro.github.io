@@ -9,7 +9,7 @@ math: true
 draft: false
 hidemeta: false
 comments: false
-description: "A brief introduction to zkSNARKs and their application to blockchains and non-blockchain use cases."
+description: "An introduction to zkSNARKs with different examples showcasing new interesting use cases and applications."
 disableHLJS: true # to disable highlightjs
 disableShare: false
 hideSummary: false
@@ -37,7 +37,7 @@ cover:
     relative: true # when using page bundles set this to true
     hidden: true # only hide on current single page
 ---
-Interactive proof systems were discovered in the 80s and are the foundation of zero knowledge proofs. An explanation of the theory behind zero knowledge proofs from first principles can be found in my [last post]({{< ref "/posts/proofs" >}}); Although almost 40 years have passed since their inception, zero knowledge proofs only recently got more widely adopted with the advent of blockchains and **non-interactive zero knowledge proofs**. There exist many protocols implementing non-interactive zero knowledge proofs (or [NIZK](https://en.wikipedia.org/wiki/Non-interactive_zero-knowledge_proof)): zkSNARKs, zkSTARKs, zkSNARGs, etc. Here I will give a brief overview of what **zkSNARKs** are and where they can be found today.
+Interactive proof systems were discovered in the 80s and are the foundation of zero knowledge proofs. Although almost 40 years have passed since their inception, zero knowledge proofs only recently got more widely adopted with the advent of blockchains and **non-interactive zero knowledge proofs**. There exist many protocols implementing non-interactive zero knowledge proofs (or [NIZK](https://en.wikipedia.org/wiki/Non-interactive_zero-knowledge_proof)): zkSNARKs, zkSTARKs, zkSNARGs, etc. Here I will give a brief overview of what **zkSNARKs** are and where they can be found today.
 
 ## (zk)SNARKs, an intuition
 Informally speaking, in zero knowledge proof systems the Verifier learns nothing from the interaction with the Prover, except the information to conclude that the claim is true. In this context, the Prover is able to convince the Verifier that she knows a witness (a secret) without sharing that information. Although the zero knowledge proof systems introduced in my [last post]({{< ref "/posts/proofs" >}}) required multiple interactions between actors to properly function, zkSNARKs take them one step further by removing that requirement. 

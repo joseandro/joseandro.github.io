@@ -9,7 +9,7 @@ math: true
 draft: false
 hidemeta: false
 comments: false
-description: "An introduction to what zero knowledge proofs are and why they work using a first principles approach."
+description: "A broader introduction to what zero knowledge proofs are and why they work using a first principles approach."
 disableHLJS: true # to disable highlightjs
 disableShare: false
 hideSummary: false

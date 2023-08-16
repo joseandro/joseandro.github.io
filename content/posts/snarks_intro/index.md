@@ -9,7 +9,7 @@ math: true
 draft: false
 hidemeta: false
 comments: false
-description: "An introduction to zkSNARKs with different examples showcasing new interesting use cases and applications."
+description: "An introduction to zkSNARKs using blockchains and applications such as zkML, zkRollups, zkBridges, zkGames, and  zkOracles."
 disableHLJS: true # to disable highlightjs
 disableShare: false
 hideSummary: false

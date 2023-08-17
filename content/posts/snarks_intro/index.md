@@ -67,7 +67,7 @@ The picture above shows the daily average USD price users had to pay to send tra
 
 Another reason for why (zk)SNARK proofs fit so well in blockchains is that they don't require interactivity. Blockchains are distributed systems. They are P2P networks consisting of many nodes that often have to replay transactions from other peers to validate blocks. If the protocol required interactivity it would not suit blockchains well, as the Prover would have to interactively prove to every node on chain that the proof is valid.
 
-Now that you know what SNARKs are and how they suit blockchains like a glove, let's explore some of the coolest applications of (zk)SNARKs being developed today. Even though scaling was the main reason for the wide adoption of SNARKs in blockchains, today there are many cool applications out there!
+Now that you learned what (zk)SNARKs are and why they suit blockchains like a glove, let's explore some of their coolest applications. Even though scaling was the main reason for the initial wide adoption of SNARKs in blockchains, today there are many other promising cool approaches also available!
 
 ## zkRollups
 A zkRollup is used to scale L1 blockchains. It is the technology responsible for making SNARKs so popular! In a zkRollup, we move the hard computation work off-chain, normally to much faster L2 chains, while the L1 stays in charge of simply verifying the work done by the L2. Here is a general overview of the solution:

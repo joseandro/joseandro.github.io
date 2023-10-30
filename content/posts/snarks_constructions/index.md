@@ -33,6 +33,8 @@ cover:
     relative: true # when using page bundles set this to true
     hidden: true # only hide on current single page
 ---
+*Special thanks to Matthew Ryan for review and feedback.*
+
 We have so far explored some [interesting applications]({{< ref "/posts/snarks_intro" >}}) enabled by SNARKs and the theory that precluded it all (i.e., [interactive proof systems]({{< ref "/posts/proofs" >}})). This is the article where we finally get to formally define SNARKs 🎉🥳! The goal of this piece is threefold:
 1. To introduce the background (i.e., mathematical and computational) knowledge needed to give you a solid base to understand SNARKs holistically.
 2. To formally define SNARKs using the definitions above.
@@ -84,7 +86,7 @@ $$
 A(x) = a_0x^0 + a_1x^1 + a_2x^2 = a_0 + a_1x + a_2x^2
 $$
 
-The values \\(a_0, a_1, ...,a_{n-1}\\) are called coefficients. Non-zero coefficients are also known as *terms* or *monomials*. The *polynomial degree* is defined by the highest monomial degree. The parameter \\(n\\) defines the *order* (aka degree-bound) of the polynomial, it is equal to the number of coefficients in the expression. The order is strictly larger than the polynomial degree \\(k\\), so you can always assume \\(n \geq k+1\\). In the example above, the order of \\(A(x)\\) is 3 and its degree is 2. 
+The values \\(a_0, a_1, ...,a_{n-1}\\) are called coefficients. A single non-zero coefficient and its power of x (e.g. \\(a_2 x^2\\)) is known as a monomial. The *polynomial degree* is defined by the highest monomial degree. The parameter \\(n\\) defines the *order* (aka degree-bound) of the polynomial, it is equal to the number of coefficients in the expression. The order is strictly larger than the polynomial degree \\(k\\), so you can always assume \\(n \geq k+1\\). In the example above, the order of \\(A(x)\\) is 3 and its degree is 2. 
 
 # Arithmetic circuits:
 In order for our SNARK construction to be able to build proofs of computation we have to fix the [computation model]({{< ref "/posts/proofs#models-of-computation" >}}) it will operate upon. The model we will use here is called ["arithmetic circuits"](https://en.wikipedia.org/wiki/Arithmetic_circuit_complexity). These circuits are the algebraic analog of boolean circuits. An arithmetic circuit \\(C\\) over a field \\(\mathbb{F}_p\\) is a function that uses field operations \\( \\{+, -, \times \\}\\) on \\(n\\) elements to produce a final element in the same field as output.
@@ -220,7 +222,7 @@ That's it, time to have some fun! Next we will explore a general framework to bu
 
 # A general SNARK framework
 SNARK systems for general circuits are usually built using a combination of two ingredients:
-1. A **functional commitment scheme**: this is a cryptographic object. Its security rely on some cryptographic assumptions.
+1. A **functional commitment scheme**: this is a cryptographic object. Its security relies on some cryptographic assumptions.
 2. A suitable **interactive oracle proof (IOP)**: an information theoretic object, so no extra assumptions are required as these are mathematically proven theorems. 
 
 ## Functional commitment schemes
@@ -271,7 +273,7 @@ Now that we know how a functional commitment scheme works in practice for a set 
 * \\(\text{commit}(gp, f, r) \rightarrow com_f \\) 
 * \\(\text{eval}(\text{Prover } P, \text{ Verifier } V,\\ com_f,\\ x \in X, \\ y \in Y) \rightarrow \\{0,1 \\}\\)
 
-We already know how the setup algorithm works, but the \\(\lambda\\) parameter is new. Don't worry about it for now, just keep in mind that the setup procedure outputs the global parameters \\(gp\\). The Prover executes `commit` to produce commitment \\(com_f\\) using as input the description of some function \\(f \in \mathcal{F}\\), the randomness \\(r \in R \\), and \\(gp\\). This is a **binding** commitment scheme for \\(\mathcal{F}\\) and optionally **hiding** too. Regular SNARKs don't need **hiding**, only SNARKs do.
+We already know how the setup algorithm works, but the \\(\lambda\\) parameter is new. Don't worry about it for now, just keep in mind that the setup procedure outputs the global parameters \\(gp\\). The Prover executes `commit` to produce commitment \\(com_f\\) using as input the description of some function \\(f \in \mathcal{F}\\), the randomness \\(r \in R \\), and \\(gp\\). This is a **binding** commitment scheme for \\(\mathcal{F}\\) and optionally **hiding** too. Regular SNARKs don't need **hiding**, only zk-SNARKs do.
 
 Finally, the evaluation protocol `eval` happens between the Prover and Verifier with \\((com_f, x, y)\\) given as inputs.
 The Prover takes the function f in the clear and outputs a short proof \\(\pi\\): 
@@ -294,7 +296,7 @@ Notice that we also included `commit` in the relation. The public statement in t
 Now that you know what functional commitment schemes are, let's explore four popular commitments often used to build SNARKs.
 
 ### Four important functional commitment schemes
-Here are some categories of functional commitment schemes that are very frequently present in SNARKs today. You read through them keep in mind that, in order to be a SNARK, we want the proof size and Verifier's running time to be at most sublinear, ideally logarithmic, in the degree `d` of the polynomial \\(f \in \mathcal{F}\\).
+Here are some categories of functional commitment schemes that are very frequently present in SNARKs today. As you read through them keep in mind that, in order to be a SNARK, we want the proof size and Verifier's running time to be at most sublinear, ideally logarithmic, in the degree \\(d\\) of the polynomial \\(f \in \mathcal{F}\\).
 
 #### Polynomial commitment schemes (PCS)
 The set \\(\mathcal{F} \\) that PCS commits to is the entire set of univariate polynomials of degree less or equal to \\(d\\) in fields of order \\(p\\).

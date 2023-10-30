@@ -1,6 +1,6 @@
 ---
 title: "How to build modern SNARKs systems"
-date: 2023-08-12T13:50:00-03:00
+date: 2023-10-30T00:00:00-03:00
 weight: 1
 aliases: ["/snarks-architectures"]
 showToc: false

@@ -33,7 +33,7 @@ cover:
     relative: true # when using page bundles set this to true
     hidden: true # only hide on current single page
 ---
-*Special thanks to O(1) Labs cryptography team for review and feedback.*
+*Special thanks to the o1Labs cryptography team for the reviews and feedbacks.*
 
 We have so far explored some [interesting applications]({{< ref "/posts/snarks_intro" >}}) enabled by SNARKs and the theory that precluded it all (i.e., [interactive proof systems]({{< ref "/posts/proofs" >}})). This is the article where we finally get to formally define SNARKs 🎉🥳! The goal of this piece is threefold:
 1. To introduce the background (i.e., mathematical and computational) knowledge needed to give you a solid base to understand SNARKs holistically.

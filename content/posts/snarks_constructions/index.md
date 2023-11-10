@@ -422,4 +422,5 @@ IOPs are interactive proof systems. In order to get a SNARK out of an IOP we hav
 # SNARKs in practice
 Arithmetic circuits are at the heart of SNARKs, but it is too much of a pain to write fully functional programs using them. For this task developers can resort to domain specific languages (DSL). They write the code of their program using the DSL, which is then compiled into a SNARK friendly format (circuit, R1CS, EVM bytecode, etc), that is finally fed to the SNARK Prover backend. Here are some popular choices of DSL: o1js, Circom, Noir, ZoKrates, Cairo, etc.
 
-We will cover some practical end-to-end examples in the next post. Até breve!
+# Conclusion
+Congratulations if you made this far! We could continue exploring here the DSLs described above, but this article is already too long. We started this post by introducing some mathematical concepts which we used to initially formally define SNARKs and later to understand the IOP + functional commitments architecture used by most modern systems nowadays. In the next post we will see how Plonk (a Poly-IOP) and KZG (a PCS) work in tandem in theory and practice! Até breve! 

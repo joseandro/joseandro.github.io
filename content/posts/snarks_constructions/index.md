@@ -3,7 +3,7 @@ title: "How to build modern SNARKs systems"
 date: 2023-10-30T00:00:00-03:00
 weight: 1
 aliases: ["/snarks-architectures"]
-showToc: false
+showToc: true
 TocOpen: false
 math: true
 draft: false
@@ -63,8 +63,6 @@ $$
 $$
 
 
-
-
 ## Finite fields
 A finite field, also known as Galois field (named after the mathematician Évariste Galois), is an algebraic structure with a finite number of elements. In practice, you can think of a finite field as the set of integers modulo \\(p\\), where \\(p\\) is some very large prime number. Here's the definition:
 
@@ -88,7 +86,7 @@ $$
 
 The values \\(a_0, a_1, ...,a_{n-1}\\) are called coefficients. A single non-zero coefficient and its power of x (e.g. \\(a_2 x^2\\)) is known as a monomial. The *polynomial degree* is defined by the highest monomial degree. The parameter \\(n\\) defines the *order* (aka degree-bound) of the polynomial, it is equal to the number of coefficients in the expression. The order is strictly larger than the polynomial degree \\(k\\), so you can always assume \\(n \geq k+1\\). In the example above, the order of \\(A(x)\\) is 3 and its degree is 2. 
 
-# Arithmetic circuits:
+## Arithmetic circuits
 In order for our SNARK construction to be able to build proofs of computation we have to fix the [computation model]({{< ref "/posts/proofs#models-of-computation" >}}) it will operate upon. The model we will use here is called ["arithmetic circuits"](https://en.wikipedia.org/wiki/Arithmetic_circuit_complexity). These circuits are the algebraic analog of boolean circuits. An arithmetic circuit \\(C\\) over a field \\(\mathbb{F}_p\\) is a function that uses field operations \\( \\{+, -, \times \\}\\) on \\(n\\) elements to produce a final element in the same field as output.
 
 $$
@@ -104,7 +102,7 @@ Arithmetic circuits are layered as [DAGs](https://en.wikipedia.org/wiki/Directed
 
 **Some important notation before we continue:** |C| defines the number of gates in a circuit C. In the image above |C| = 4.
 
-## Examples of arithmetic circuits
+### Examples of arithmetic circuits
 Arithmetic circuits are machines that compute n-variant polynomials, so they can do anything that polynomial time computations can do! There exist many interesting circuits available, let's look at a simple one:
 
 ```
@@ -115,7 +113,7 @@ C_SHA256(h, m) = (h - SHA256(m))
 
 We can actually build circuits that do much more complicated things. You can see some examples of these in my last post about SNARKs [applications]({{< ref "/posts/snarks_intro" >}}). Maybe this conclusion slipped unnoticed, but did you realize that we can use circuits to represent computations of programs as well? Think about it using the example above. This conclusion is very important. We will make heavy use of it later on when we dig into SNARKs constructions. For now, let me introduce the two types of circuits most often used today.
 
-## Types of circuits
+### Types of circuits
 Circuits are often categorized in one of the two following categories:
 * **Unstructured circuits**: In these circuits, the wires can be connected in any way the developer wants. It's like having a bunch of gates, and you can connect them however you like.
 * **Structured circuits**: These circuits are layered in a very organized way. Imagine there's one special arithmetic circuit design, and you just keep using the same design over and over again in a neat, repetitive pattern. A very famous category of structured circuits are called virtual machine (or VM, this is where the zkVM term comes from). In a zkVM, the same fixed circuit is repeated over and over again until the computation is finished. You can think of the fixed circuit as being the same microprocessor that gets called to execute a step in the instruction cycle to continue the computation of a program until it finishes running.
@@ -253,7 +251,7 @@ We know that perfect hash functions likely don't exist, so in order to have hidi
 
 In practice, the commitment scheme above is too simple and won't work in SNARK systems. That's where our "functional commitment scheme" friend comes into play! The ability of committing to functions will give us some interesting properties. Before we get more into its math, let's use an example to show how it can be used:
 
-### Committing procedure:
+### Committing procedure
 1. First we fix a set of functions \\(\mathcal{F} = \\{ f:X \rightarrow Y \\} \\).
 2. The committer, or in our case the prover, will commit to a given function \\(f \in \mathcal{F} \\). You can think of \\(f\\) as an arithmetic circuit (remember that circuits are the computation recipe of a n-variate polynomial or a program?).
 3. The Prover use some randomness \\( r \in R \\) to commit to a description of the circuit:
@@ -262,7 +260,7 @@ com_f \leftarrow commit(f, r)
 $$
 4. The Prover sends the commitment \\(com_f\\) to the Verifier. Sometimes \\(\boxed{f}\\) is also used to represent \\(com_f\\).
 
-### Verifying procedure:
+### Verifying procedure
 1. In order to verify \\(\boxed{f}\\) the Verifier sends some \\( x \in X\\) to the Prover.
 2. The Prover replies with proof \\(\pi\\) together with some \\(y \in Y\\).
 3. The Verifier uses the proof \\(\pi\\) to verify that \\(f(x)=y \\) and \\(f \in \mathcal{F} \\).
@@ -378,7 +376,7 @@ Since the Verifier learns the evaluations of \\((f, g)\\) this is not a zk-SNARK
 
 We have reached the end of functional commitment schemes, let's now move on to the final ingredient of SNARKs!
 
-## Interactive oracle proofs (\\(\mathcal{F}\\)-IOP)
+## Interactive oracle proofs (IOP)
 An \\(\mathcal{F}\\)-IOP is an [interactive proof system]({{< ref "/posts/proofs#interactive-proof-systems-1" >}}) that can boost functional commitment schemes in a well defined way to produce SNARKs for general circuits. For example, we can use a Poly-IOP to boost the PCS for polynomials \\( f \in \mathbb{F}^{\leq d}_p\\)[X] in order to build a SNARK for any circuit \\(C\\) where \\(|C| < d\\).
 
 To define \\(\mathcal{F}\\)-IOP more precisely, consider the circuit \\(C(x, w)\\). Its public input is \\( x \in \mathbb{F}^{n}_p\\) and \\(w\\) is its witness. An \\(\mathcal{F}\\)-IOP is a proof system with a specific structure that will prove that the Prover knows some \\(w\\) such that \\( \exists w: C(x, w) = 0 \\) as follows:
@@ -394,7 +392,7 @@ $$
 \text{verify}^{f_{-s}, \dots, f_t}(x, r_1, \dots, r_{t-1})
 $$
 
-### The \\(\mathcal{F}\\)-IOP properties
+### IOP properties
 The \\(\mathcal{F}\\)-IOP proof system is complete and unconditionally knowledge sound. 
 
 **Complete**: if an honest Prover knows a \\(w\\) such that \\(C(x,w)=0\\) and honestly follows the protocol, then the Verifier should accept its proof with high probability (derived from SZDL).
@@ -407,7 +405,7 @@ We don't hide the functions in commitments because the functional commitment sch
 
 If you're interested, check [this](https://youtu.be/bGEXYpt3sj0?t=4262) video for a walkthrough of a simple, yet interesting, Poly-IOP example.
 
-# Popular \\(\mathcal{F}\\)-IOPs
+## Popular IOPs
 Here are some examples of popular \\(\mathcal{F}\\)-IOPs. We will explore them in detail in future posts. 
 
 | **Poly-IOP** | **Multilinear-IOP** | **Vector-IOP** |
